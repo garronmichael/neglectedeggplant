@@ -42,7 +42,7 @@ var triggerSMS = function(recipientPhone, smsData, callbacks){
 
     var messageBody = 'Greetings from Wayfare! We found a flight from '
                   + smsData.origin + ' to ' + smsData.destination + ' for $' + smsData.price + '. '
-                  + 'To book a flight with ' + smsData.carrier + ' departing at ' + smsData.departure +
+                  + 'To book a flight with ' + smsData.carrier + ' departing at ' + smsData.departure
                   + ' visit ' + smsData.proceedUrl;
 
     //Send an SMS text message
