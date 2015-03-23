@@ -45,7 +45,6 @@ bower install
 
 ### Creating a Local Database
 
-
 Determine if mysql is installed by running
 ```sh
 which mysql
