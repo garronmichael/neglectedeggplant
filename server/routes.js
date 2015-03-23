@@ -119,17 +119,27 @@ module.exports = function(app) {
   // Create new user from form submission.
   app.post('/usertodatabase', function(req, res) {
 
-    User.create({
-      email: req.body.email,
-      phone: req.body.phone,
-      origin: req.body.home,
-      destination: req.body.destination,
-      budget: req.body.budget,
-      sent: false
-    })
-    .then(function(){
-      res.send(200);
-    });
+    // Check for less than five instances of the user with unsent status of (sent:0)
+    // then create user record
+    User.count({ where: {email: req.body.email, sent: false} })
+        .then(function(count) { 
+          if(count < 5) {
+            // console.log('We added a user. We counted: ', count);
+            User.create({
+              email: req.body.email,
+              phone: req.body.phone,
+              origin: req.body.home,
+              destination: req.body.destination,
+              budget: req.body.budget,
+              sent: false
+            })
+            .then(function(){
+              res.send(200);
+            });
+          } else {
+            // console.log('We did NOT add a user. We counted: ', count);
+          }
+        });
 
   });
 
