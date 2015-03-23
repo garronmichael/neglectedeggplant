@@ -45,53 +45,64 @@ bower install
 
 ### Creating a Local Database
 
-Determine if mysql is installed by running
+Determine if mysql is installed:
 ```sh
 which mysql
 ```
-If not, run 
+If not:
 ```sh
 brew install mysql
 ```
-Stop all currently running mysql servers
+Stop all currently running mysql servers:
 ```sh
 mysql.server stop
 ```
-Run a local mysql server
+Run a local mysql server:
 ```sh
 mysql.server start 
 ```
-Login by running 
+Login with this example where 'root' is the username and the password is omitted:
 ```sh
 mysql -u root 
 ```
-Create a database
+Create a database:
 ```sh
 create database db
 ```
 Exit mysql
 
-You will need to create the following environmental variables :
+Create the following environmental variables:
 ```sh
 CLEAR_DB_DATABASE
 CLEAR_DB_USER
 CLEAR_DB_PASSWORD
 CLEAR_DB_SERVER
 ```
-Local variables are create by running export varName=‘value’ in the terminal. Because I use ‘mysql -u root’ to access my local mysql database ‘db’, I will run:
+In this example use ‘mysql -u root’ to access my local mysql database ‘db’, I will run:
 ```sh
 export CLEAR_DB_DATABASE=‘db’
 export CLEAR_DB_USER=‘root’
 export CLEAR_DB_PASSWORD=‘’
 export CLEAR_DB_SERVER=‘localhost’
 ```
-Confirm these variables have been created properly by initializing node and running
+Confirm these variables have been created properly by initializing node
 ```sh
+node
 process.env
 ```
-Run app.js using nodemon. Data from the local app instance should now be saved to the local mysql database. 
+The app should now be ready:
+```sh
+nodemon path/to/app.js
+```
+Data from the local app instance should now be saved to the local mysql database. 
 
-**Important: You must run app.js in the same bash instance as your newly created environmental variables as these variables do not persist between separate bash instances (tabs).**
+**Important:** You must run app.js in the same bash instance as your newly created environmental variables as these variables do not persist between separate bash instances (tabs).
+
+### Resources
+[SQL Tutorial](http://www.sqlcourse.com/)
+[MySQL 5.6 Tutorial](http://dev.mysql.com/doc/refman/5.6/en/tutorial.html)
+[process.env](https://nodejs.org/api/process.html#process_process_env)
+[nodemon](https://github.com/remy/nodemon)
 
 ### Roadmap
 
