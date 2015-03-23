@@ -69,9 +69,7 @@ Create a database:
 ```sh
 create database db
 ```
-Exit mysql
-
-Create the following environmental variables:
+Exit mysql and create the following environmental variables:
 ```sh
 CLEAR_DB_DATABASE
 CLEAR_DB_USER
@@ -90,19 +88,17 @@ Confirm these variables have been created properly by initializing node
 node
 process.env
 ```
-The app should now be ready:
+The app should now be ready and data from the local app instance should now be saved to the local mysql database:
 ```sh
 nodemon path/to/app.js
 ```
-Data from the local app instance should now be saved to the local mysql database. 
-
 **Important:** You must run app.js in the same bash instance as your newly created environmental variables as these variables do not persist between separate bash instances (tabs).
 
 ### Resources
-[SQL Tutorial](http://www.sqlcourse.com/)
-[MySQL 5.6 Tutorial](http://dev.mysql.com/doc/refman/5.6/en/tutorial.html)
-[process.env](https://nodejs.org/api/process.html#process_process_env)
-[nodemon](https://github.com/remy/nodemon)
+- [SQL Tutorial](http://www.sqlcourse.com/)
+- [MySQL 5.6 Tutorial](http://dev.mysql.com/doc/refman/5.6/en/tutorial.html)
+- [process.env](https://nodejs.org/api/process.html#process_process_env)
+- [nodemon](https://github.com/remy/nodemon)
 
 ### Roadmap
 
