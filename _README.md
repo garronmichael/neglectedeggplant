@@ -51,7 +51,7 @@ Determine if mysql is installed by running
 which mysql
 ```
 If not, run 
-```sh`
+```sh
 brew install mysql
 ```
 Stop all currently running mysql servers
