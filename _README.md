@@ -43,6 +43,57 @@ npm install
 bower install
 ```
 
+### Creating a Local Database
+
+
+Determine if mysql is installed by running
+```sh
+which mysql
+```
+If not, run 
+```sh`
+brew install mysql
+```
+Stop all currently running mysql servers
+```sh
+mysql.server stop
+```
+Run a local mysql server
+```sh
+mysql.server start 
+```
+Login by running 
+```sh
+mysql -u root 
+```
+Create a database
+```sh
+create database db
+```
+Exit mysql
+
+You will need to create the following environmental variables :
+```sh
+CLEAR_DB_DATABASE
+CLEAR_DB_USER
+CLEAR_DB_PASSWORD
+CLEAR_DB_SERVER
+```
+Local variables are create by running export varName=‘value’ in the terminal. Because I use ‘mysql -u root’ to access my local mysql database ‘db’, I will run:
+```sh
+export CLEAR_DB_DATABASE=‘db’
+export CLEAR_DB_USER=‘root’
+export CLEAR_DB_PASSWORD=‘’
+export CLEAR_DB_SERVER=‘localhost’
+```
+Confirm these variables have been created properly by initializing node and running
+```sh
+process.env
+```
+Run app.js using nodemon. Data from the local app instance should now be saved to the local mysql database. 
+
+**Important: You must run app.js in the same bash instance as your newly created environmental variables as these variables do not persist between separate bash instances (tabs).**
+
 ### Roadmap
 
 View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
