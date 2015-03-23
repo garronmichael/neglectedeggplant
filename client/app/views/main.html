@@ -10,15 +10,22 @@
 
     Additionally, the 'next' button is only enabled if a selection is made from this Typeahead form. It cannot be edited (otherwise, the button disables itself immediately)-->
     <form name="destinationForm">
-    <input type="text" ng-model="selected" placeholder="Type in a city name" typeahead="data.name + ': ' + data.city + ', ' + data.country + ' — ' + data.code for data in data | filter:$viewValue | limitTo:8" typeahead-editable="false" class="form-control text-center" ng-required="true">
+    <input type="text" ng-model="selected" placeholder="Type in a city name" typeahead="data.city + ', ' + data.country + ' — ' + data.code for data in data | filter:$viewValue | limitTo:8" typeahead-editable="false" class="form-control text-center" ng-required="true">
     <p class="help-block" ng-show="destinationForm.text.$error.required">Please select from the dropdown menu</p>
     </form>
     <!-- When the 'NEXT' button is clicked, we invoke sendData from the factory object, setting a 'destination' property to it and passing along the value in the model above.
 
     This button is also disabled unless a value is entered into the model above, preventing empty submission -->
-    <a href="#/location" class="smooth-scroll btn btn-danger btn-next" ng-disabled="!selected" ng-click="custObj.sendData('destination', selected)">NEXT</a>
+    <a href="#/location" class="smooth-scroll btn btn-danger btn-next" ng-disabled="!selected" ng-click="custObj.sendData('destination', selected.substr(-3))">NEXT</a>
     </div>
   </form>
+
+  <div class="progress">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+      0%
+    </div>
+  </div>
+
     <hr>
     <h3>Can't decide? We understand. Here are some popular choices:</h3>
 
